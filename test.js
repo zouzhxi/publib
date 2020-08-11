@@ -1,1 +1,3 @@
-alert('github.com/test.js');
+function hmsg(){
+  alert('github.com/test.js');
+}
