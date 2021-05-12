@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         过滤无用元素  自用
 // @namespace    cn.zzxmall.adhelper
-// @version      0.1.5
-// @description  天猫，淘宝，京东 芒果TV 爱奇艺 腾讯视频 baidu csdn youku 中的无用元素过滤
+// @version      0.1.6
+// @description  天猫，淘宝，京东 芒果TV 爱奇艺 腾讯视频 baidu csdn youku sohu 中的无用元素过滤
 // @author       zzxmall.cn
 // @grant        none
 // @charset		 UTF-8
@@ -17,6 +17,7 @@
 // @include      *://*.csdn.net/*
 // @include      *://*.baidu.com/*
 // @include      *://*.youku.com/*
+// @include      *://*.sohu.com/*
 // ==/UserScript==
 
 (function () {
@@ -34,7 +35,8 @@
                 iqiyi: function () { return (AdHelper.config.window_host.indexOf(".iqiyi.com") != -1); },
                 csdn: function () { return (AdHelper.config.window_host.indexOf(".csdn.net") != -1); },
                 baidu: function () { return (AdHelper.config.window_host.indexOf(".baidu.com") != -1); },
-                youku: function () { return (AdHelper.config.window_host.indexOf(".youku.com") != -1); }
+                youku: function () { return (AdHelper.config.window_host.indexOf(".youku.com") != -1); },
+                sohu: function () { return (AdHelper.config.window_host.indexOf(".sohu.com") != -1); }
             }
         }
         , Site: {
@@ -167,6 +169,37 @@
                     }
                 }
             }
+            , Site_Sohu: {
+                __removeAD: function () {
+                    setInterval(function () {
+                        $(".god_header").remove();//
+                        $(".download-app").remove();//导航/下载APP
+                        $(".share").remove();//分享
+                        //film
+                        $(".bottom_vip_info_wrap").remove();//会员
+                        $(".G-browser").remove();//升级你的浏览器
+                        $(".winbox-mask").remove();//升级你的浏览器
+                        $(".hd-fBox-vip").remove();//导航/开通VIP
+                        $(".hd-fBox-ifox").remove();//导航/下载PC端
+                        $(".hd-fBox-app").remove();//导航/下载APP
+                        $(".hd-fBox-user").remove();//导航/登陆
+                        $(".item-ifox").remove();//右侧漂浮/下载PC端
+                        $(".item-app").remove();//右侧漂浮/下载APP
+                        $(".vBox-xiaPhone").remove();//手机看
+                        $(".x-download-panel").remove();//
+                        $(".detailInfo_btns").remove();//
+                        $(".j-yunyingwei").remove();//
+                        $(".weixinCode").remove();//
+                        $(".rank").remove();//
+                        $(".adv").remove();//
+                    }, 300);
+                }
+                , start: function () {
+                    if (AdHelper.config.SiteIsOpenModule.youku) {
+                        this.__removeAD();
+                    }
+                }
+            }
         }
         , Run: function () {
             this.Site.Site_JD.start();
@@ -177,6 +210,7 @@
             this.Site.Site_Csdn.start();
             this.Site.Site_Baidu.start();
             this.Site.Site_Youku.start();
+            this.Site.Site_Sohu.start();
         }
     }
     AdHelper.Run();
