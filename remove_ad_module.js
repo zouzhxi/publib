@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         过滤无用元素  自用
 // @namespace    cn.zzxmall.adhelper
-// @version      0.1.4
-// @description  天猫，淘宝，京东 芒果TV 爱奇艺 腾讯视频 中的无用元素过滤
+// @version      0.1.5
+// @description  天猫，淘宝，京东 芒果TV 爱奇艺 腾讯视频 baidu csdn youku 中的无用元素过滤
 // @author       zzxmall.cn
 // @grant        none
 // @charset		 UTF-8
@@ -14,6 +14,9 @@
 // @include      *://*.mgtv.com/*
 // @include      *://*.iqiyi.com/*
 // @include      *://v.qq.com/*
+// @include      *://*.csdn.net/*
+// @include      *://*.baidu.com/*
+// @include      *://*.youku.com/*
 // ==/UserScript==
 
 (function () {
@@ -30,7 +33,8 @@
                 vqq: function () { return (AdHelper.config.window_host.indexOf("v.qq.com") != -1); },
                 iqiyi: function () { return (AdHelper.config.window_host.indexOf(".iqiyi.com") != -1); },
                 csdn: function () { return (AdHelper.config.window_host.indexOf(".csdn.net") != -1); },
-                baidu: function () { return (AdHelper.config.window_host.indexOf(".baidu.com") != -1); }
+                baidu: function () { return (AdHelper.config.window_host.indexOf(".baidu.com") != -1); },
+                youku: function () { return (AdHelper.config.window_host.indexOf(".youku.com") != -1); }
             }
         }
         , Site: {
@@ -146,6 +150,23 @@
                     }
                 }
             }
+            , Site_Youku: {
+                __removeAD: function () {
+                    setInterval(function () {
+                        $(".u-vip_3-BwE").remove();//导航/开通会员
+                        $(".u-app_Ubbmj ").remove();//导航/PC下载
+                        $(".u-login_PEt-Q").remove();//导航/会员登陆
+                        $(".aplus_exp").remove();//
+                        $(".info-bottom_3C0mQ").remove();//上滑登陆提示
+                        $(".u-panel_3C81k").remove();//上滑登陆提示
+                    }, 300);
+                }
+                , start: function () {
+                    if (AdHelper.config.SiteIsOpenModule.youku) {
+                        this.__removeAD();
+                    }
+                }
+            }
         }
         , Run: function () {
             this.Site.Site_JD.start();
@@ -154,6 +175,8 @@
             this.Site.Site_Mgtv.start();
             this.Site.Site_vqq.start();
             this.Site.Site_Csdn.start();
+            this.Site.Site_Baidu.start();
+            this.Site.Site_Youku.start();
         }
     }
     AdHelper.Run();
