@@ -196,7 +196,7 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.SiteIsOpenModule.youku) {
+                    if (AdHelper.SiteIsOpenModule.sohu) {
                         this.__removeAD();
                     }
                 }
