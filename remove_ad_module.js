@@ -26,8 +26,10 @@
     const AdHelper = {
         config: {
             window_url: window.location.href,
-            window_host: window.location.host,
-            SiteIsOpenModule: {
+            window_host: window.location.host
+        }
+    };
+    AdHelper.SiteIsOpenModule = {
                 jd: this.window_host.indexOf(".jd.com") != -1,
                 tmall: this.window_host.indexOf(".tmall.com") != -1,
                 mgtv: this.window_host.indexOf(".mgtv.com") != -1,
@@ -37,9 +39,8 @@
                 baidu: this.window_host.indexOf(".baidu.com") != -1,
                 youku: this.window_host.indexOf(".youku.com") != -1,
                 sohu: this.window_host.indexOf(".sohu.com") != -1
-            }
-        }
-        , Site: {
+        };
+    AdHelper.Site = {
             Site_JD: {
                 __removeAD: function () {
                     setInterval(function () {
@@ -48,7 +49,7 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.config.SiteIsOpenModule.jd) {
+                    if (AdHelper.SiteIsOpenModule.jd) {
                         this.__removeAD();
                     }
                 }
@@ -60,7 +61,7 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.config.SiteIsOpenModule.tmall) {
+                    if (AdHelper.SiteIsOpenModule.tmall) {
                         this.__removeAD();
                     }
                 }
@@ -79,7 +80,7 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.config.SiteIsOpenModule.mgtv) {
+                    if (AdHelper.SiteIsOpenModule.mgtv) {
                         this.__removeAD();
                     }
                 }
@@ -97,7 +98,7 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.config.SiteIsOpenModule.iqiyi) {
+                    if (AdHelper.SiteIsOpenModule.iqiyi) {
                         this.__removeAD();
                     }
                 }
@@ -118,7 +119,7 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.config.SiteIsOpenModule.valueOf) {
+                    if (AdHelper.SiteIsOpenModule.vqq) {
                         this.__removeAD();
                     }
                 }
@@ -135,7 +136,7 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.config.SiteIsOpenModule.csdn) {
+                    if (AdHelper.SiteIsOpenModule.csdn) {
                         this.__removeAD();
                     }
                 }
@@ -147,7 +148,7 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.config.SiteIsOpenModule.baidu) {
+                    if (AdHelper.SiteIsOpenModule.baidu) {
                         this.__removeAD();
                     }
                 }
@@ -164,7 +165,7 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.config.SiteIsOpenModule.youku) {
+                    if (AdHelper.SiteIsOpenModule.youku) {
                         this.__removeAD();
                     }
                 }
@@ -195,13 +196,13 @@
                     }, 300);
                 }
                 , start: function () {
-                    if (AdHelper.config.SiteIsOpenModule.youku) {
+                    if (AdHelper.SiteIsOpenModule.youku) {
                         this.__removeAD();
                     }
                 }
             }
-        }
-        , Run: function () {
+        };
+    AdHelper.Run = function () {
             this.Site.Site_JD.start();
             this.Site.Site_Tmall.start();
             this.Site.Site_iqiyi.start();
@@ -211,7 +212,6 @@
             this.Site.Site_Baidu.start();
             this.Site.Site_Youku.start();
             this.Site.Site_Sohu.start();
-        }
-    }
+        };
     AdHelper.Run();
 })();
