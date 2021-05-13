@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         过滤无用元素  自用
 // @namespace    cn.zzxmall.adhelper
-// @version      0.1.6
+// @version      0.1.7
 // @description  天猫，淘宝，京东 芒果TV 爱奇艺 腾讯视频 baidu csdn youku sohu 中的无用元素过滤
 // @author       zzxmall.cn
 // @grant        none
@@ -28,15 +28,15 @@
             window_url: window.location.href,
             window_host: window.location.host,
             SiteIsOpenModule: {
-                jd: function () { return (AdHelper.config.window_host.indexOf(".jd.com") != -1); },
-                tmall: function () { return (AdHelper.config.window_host.indexOf(".tmall.com") != -1); },
-                mgtv: function () { return (AdHelper.config.window_host.indexOf(".mgtv.com") != -1); },
-                vqq: function () { return (AdHelper.config.window_host.indexOf("v.qq.com") != -1); },
-                iqiyi: function () { return (AdHelper.config.window_host.indexOf(".iqiyi.com") != -1); },
-                csdn: function () { return (AdHelper.config.window_host.indexOf(".csdn.net") != -1); },
-                baidu: function () { return (AdHelper.config.window_host.indexOf(".baidu.com") != -1); },
-                youku: function () { return (AdHelper.config.window_host.indexOf(".youku.com") != -1); },
-                sohu: function () { return (AdHelper.config.window_host.indexOf(".sohu.com") != -1); }
+                jd: this.window_host.indexOf(".jd.com") != -1,
+                tmall: this.window_host.indexOf(".tmall.com") != -1,
+                mgtv: this.window_host.indexOf(".mgtv.com") != -1,
+                vqq: this.window_host.indexOf("v.qq.com") != -1,
+                iqiyi: this.window_host.indexOf(".iqiyi.com") != -1,
+                csdn: this.window_host.indexOf(".csdn.net") != -1,
+                baidu: this.window_host.indexOf(".baidu.com") != -1,
+                youku: this.window_host.indexOf(".youku.com") != -1,
+                sohu: this.window_host.indexOf(".sohu.com") != -1
             }
         }
         , Site: {
